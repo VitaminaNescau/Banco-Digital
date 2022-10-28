@@ -4,4 +4,7 @@ public class user {
     public void userSignUp(String name,String cpf,String password){
 
     }
+    public boolean userSignIn(){
+        return true;
+    }
 }
