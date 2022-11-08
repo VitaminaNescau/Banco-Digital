@@ -9,7 +9,7 @@ public class teste {
       user t = new user();
       
       userDAO teste = new userDAO();
-      teste.signIN(t);
+    teste.signIN(t);
 
       /*  t.setDate();;
       t.setNome("teste2");
@@ -21,8 +21,13 @@ public class teste {
       
       teste.signUP(t);*/
 
-      
-     
+      login login = new login();
+     /*  login.userSignUp("Davi", "10006264581", "@gmail.cxom", "davi123456", "71987908550");
+      login.userSignUp("Bruno", "07466819508", "@gmail.cxom", "bruno123456", "71987908550");
+      login.userSignUp("Douglas", "04016464595", "@gmail.cxom", "davi123456", "71987908550");
+*/
+      login.userSignIn("1000626481","davi123456");
 
+      
 }
 }
