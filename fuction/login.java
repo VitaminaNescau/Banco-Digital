@@ -16,8 +16,10 @@ public class login {
         newUser.signUP(createUser);
     }
     //login
-    public boolean userSignIn(String cpf,String password){
-        
-        return true;
+    public void userSignIn(String cpf,String password){
+        createUser.setCPF(cpf);
+        createUser.setPass(password);
+        userDAO User = new userDAO();
+        User.signIN(createUser);
     }
 }
