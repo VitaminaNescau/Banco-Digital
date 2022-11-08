@@ -16,7 +16,7 @@ public class login {
         newUser.signUP(createUser);
     }
     //login
-    public boolean userSignIn(){
+    public boolean userSignIn(String cpf,String password){
         
         return true;
     }

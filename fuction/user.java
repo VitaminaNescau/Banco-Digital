@@ -1,10 +1,15 @@
 package fuction;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+
 public class user {
     private int id;
     private String nome,telefone,mail,cpf,password;
     private double saldo;
-
+    private Date date;
     public int getId(){
         return id;
     }
@@ -47,4 +52,12 @@ public class user {
     public void setPass(String password){
         this.password=password;
     }
+    public void setDate(){
+        this.date = new Date(System.currentTimeMillis());
+    }
+    public String getDate(){
+        DateFormat dF = new SimpleDateFormat("yyyy/MM/dd");
+        return dF.format(date);
+    }
+
 }

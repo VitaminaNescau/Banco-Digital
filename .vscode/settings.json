@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "drive/ojdbc10.jar",
+        "drive/mysql-connector-java-8.0.30.jar",
+        "drive/mysql.jar"
+    ]
+}
