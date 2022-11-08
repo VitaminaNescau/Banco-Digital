@@ -4,7 +4,7 @@ public class login {
      user createUser = new user();
     //cadastro
     public void userSignUp(String name,String cpf,String email,String password,String cell){
-       
+       userDAO newUser = new userDAO();
         createUser.setNome(name);
         createUser.setTelefone(cell);
         createUser.setCPF(cpf);
@@ -12,8 +12,13 @@ public class login {
         createUser.setPass(password);
         
         //corrigir valores de telefone no mysql
-        userDAO newUser = new userDAO();
-        newUser.signUP(createUser);
+       if (newUser.verifyUP(createUser)) {
+             newUser.signUP(createUser);
+       }else{
+            System.out.println("CPF já cadastrado");
+       }
+        
+       
     }
     //login
     public void userSignIn(String cpf,String password){
