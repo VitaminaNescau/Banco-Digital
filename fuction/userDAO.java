@@ -34,17 +34,31 @@ public class userDAO extends conect{
 
     }
     public void signIN(user user){
-        sql ="select * from user";
-        try {
+       //sql ="select cpf from user where cpf = 987654321";
+        //sql = "select cpf from user where cpf = ?;";
+        sql = "select * from user;";
+       try {
             Statement ps = con.createStatement();
             ResultSet r = ps.executeQuery(sql);
             //oq result faz? oq executeQuery faz?
-            //String name = r.getString(0);
-           /*  ps.setString(1, user.getCPF());
-            ps.setString(2, user.getPass());*/
             while(r.next()) {
+                int cont=0;
+                if (user.getCPF().equals(r.getString(3))) {
+                    cont++;
+                    System.out.println(cont);
+                    if (r.getString(4).equals(user.getPass())) {
+                        System.out.println(cont);
+                     System.out.println("encontrou"+" " + r.getString(3)+" "+r.getString(4));
+                     break;
+                     
+                }else{
+                    System.out.println("Conta não encontra ou não existe");
+                }
+                }
+                
+                System.out.println("entrou no while");
               // 
-                System.out.println("encontrou"+" " + r.getString(2));
+               
             }
         } catch (Exception e) {
             // TODO: handle exception
