@@ -10,6 +10,9 @@ public class user {
     private String nome,telefone,mail,cpf,password;
     private double saldo;
     private Date date;
+    public user(){
+        setDate();
+    }
     public int getId(){
         return id;
     }
