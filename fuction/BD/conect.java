@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 
 public class conect {
-    private final String USERNAME = "root";
-    private final String PASSWORD = "brasil";
+    private final String USERNAME = "admin";
+    private final String PASSWORD = "123456789";
     //login e senha de acesso ao mysql
-    private final String URl_BC = "jdbc:mysql://localhost:3306/banco_digital";
+    private final String URl_BC = "jdbc:mysql://banco-digital.czklbchcj5fm.us-east-1.rds.amazonaws.com/banco_digital";
     private Connection conect;
     //metodo q cria a conexão com o myslq
         public Connection conectMysql(){
