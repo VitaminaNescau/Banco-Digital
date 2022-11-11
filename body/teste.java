@@ -9,7 +9,7 @@ public class teste {
       
       userDAO teste = new userDAO();
        // teste.signIN(t);
-      movi mo = new movi();
+     
       /*  t.setDate();;
       t.setNome("teste2");
       //t.setTelefone("71987908550");
@@ -21,15 +21,15 @@ public class teste {
       teste.signUP(t);*/
 
         login login = new login();
-       /*  login.userSignUp("Davi", "10006264581", "@gmail.cxom", "davi123456", "71987908550");
+        login.userSignUp("Vitor", "09301041536", "@gmail.cxom", "vitor123456", "71987908550");
         login.userSignUp("Bruno", "07466819508", "@gmail.cxom", "bruno123456", "71987908550");
         login.userSignUp("Douglas", "04016464595", "@gmail.cxom", "davi123456", "71987908550");
-        */
-        teste.updateINFO(t);
+        
+        //teste.updateINFO(t);
      //login.userSignIn("07466819508","bruno123456");
-     if (login.userSignIn("04016464595","davi123456")) {
+     if (login.userSignIn("09301041536","vitor123456")) {
         System.out.println("sucesso");
-        mo.movita(t);
+         movi mo = new movi(3935);
      } else {
         System.out.println("depressão");
      }
