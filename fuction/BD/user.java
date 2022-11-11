@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 public class user {
     private static int id;
     private static String nome,telefone,mail,cpf,password;
-    private static double saldo;
+    private static double saldo,saque;
     private static Date date;
     public user(){
         setDate();
@@ -62,5 +62,11 @@ public class user {
         DateFormat dF = new SimpleDateFormat("yyyy/MM/dd");
         return dF.format(date);
     }
+    public double getSaque(){
+        return saque;
+    }
+    public void setSaque(double saque){
+        this.saque = saque;
 
+    }
 }
