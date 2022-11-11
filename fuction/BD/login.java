@@ -11,7 +11,8 @@ public class login {
         createUser.setMail(email);
         createUser.setPass(password);
         //corrigir valores de telefone no mysql
-       if (newUser.verifyUP(createUser)) {
+       
+        if (newUser.verifyUP(createUser,1)) {
              newUser.signUP(createUser);
        }else{
             System.out.println("CPF já cadastrado");
