@@ -10,7 +10,11 @@ public class movi {
     userDAO DAO = new userDAO();
     /*Permitir transferências (pix)
 Permitir depósitos para outros usuários. */
-    public void  bcSaldo(user user){
+    public movi(double s){
+        saques(s);
+    }
+
+public void  bcSaldo(user user){
       user.setSaldo(10000.0); 
     }
 
