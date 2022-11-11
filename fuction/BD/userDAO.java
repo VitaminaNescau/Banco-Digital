@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import fuction.movi;
-
 public class userDAO extends conect {
     String sql;  
     boolean status;
@@ -33,7 +31,6 @@ public class userDAO extends conect {
             e.printStackTrace();
             System.out.println("Ocorreu um erro, tente novamente");
         }
-
     }
     public boolean signIN(user user){
        //sql ="select cpf from user where cpf = 987654321";
@@ -73,20 +70,42 @@ public class userDAO extends conect {
         System.out.println(status +" signIN");//teste
         return status;
     }
-    public boolean verifyUP(user user){
-        boolean status=false;
-        sql ="select cpf from user";
+    public boolean verifyUP(user user, int t){
+        //boolean status=false;
         try {
-            PreparedStatement st = con.prepareStatement(sql);
-            ResultSet re = st.executeQuery();
-            while (re.next()) {
-                if (re.getString("cpf").equals(user.getCPF())) {
-                  status = false;
+            switch (t) {
+                case 1:sql ="select cpf from user";
+                PreparedStatement st = con.prepareStatement(sql);
+                ResultSet re = st.executeQuery();
+                    while (re.next()) {
+                        if (re.getString("cpf").equals(user.getCPF())) {
+                        status = false;
+                            break;
+                        } else {
+                        status = true;
+                        }
+                     } 
+                break;
+                case 2:
+                    sql ="select balance from user where id_user=?";
+                    PreparedStatement stB = con.prepareStatement(sql);
+                    stB.setInt(1, user.getId());
+                    ResultSet reB = stB.executeQuery();     
+                    while (reB.next()) {
+                        System.out.println(reB.getDouble("balance")+" " +user.getSaque());
+                        if (user.getSaque()<=reB.getDouble("balance") && reB.getDouble("balance") > 0) {
+                                status = true; 
+                                
+                                break;
+                            } else {
+                            status = false;
+                            }
+                        }
+                break;
+                default:
                     break;
-                } else {
-                   status = true;
-                }
             }
+            
           
         } catch (SQLException e) {
             
@@ -98,6 +117,7 @@ public class userDAO extends conect {
     public void updateINFO(user user){
         sql = "update user set balance = ? where id_user = ? ";
         try {
+            System.out.println(user.getId()+" update");
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDouble(1, user.getSaldo());
             ps.setInt(2, user.getId());
