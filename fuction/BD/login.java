@@ -1,17 +1,16 @@
 package fuction.BD;
 //essa classe sera usada para login e cadastro de conta
-public class login {
-     user createUser = new user();
+public class Login {
+     User createUser = new User();
     //cadastro
     public void userSignUp(String name,String cpf,String email,String password,String cell){
-       userDAO newUser = new userDAO();
+       UserDAO newUser = new UserDAO();
         createUser.setNome(name);
         createUser.setTelefone(cell);
         createUser.setCPF(cpf);
         createUser.setMail(email);
         createUser.setPass(password);
-        //corrigir valores de telefone no mysql
-       
+        //verifica se o cpf já existe no banco de dados
         if (newUser.verifyUP(createUser,1)) {
              newUser.signUP(createUser);
        }else{
@@ -22,8 +21,7 @@ public class login {
     public boolean userSignIn(String cpf,String password){
         createUser.setCPF(cpf);
         createUser.setPass(password);
-        userDAO User = new userDAO();
-        
+        UserDAO User = new UserDAO();
         if (User.signIN(createUser)) {
             return true;
         } else {
