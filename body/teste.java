@@ -1,13 +1,14 @@
 package body;
-import fuction.movi;
-import fuction.BD.login;
-import fuction.BD.user;
-import fuction.BD.userDAO;
+import fuction.Movi;
+import fuction.BD.Login;
+import fuction.BD.User;
+import fuction.BD.UserDAO;
+import fuction.BD.User;
 public class teste {
     public static void main(String[] args) {
-      user t = new user();
+      User t = new User();
       
-      userDAO teste = new userDAO();
+      UserDAO teste = new UserDAO();
        // teste.signIN(t);
      
       /*  t.setDate();;
@@ -20,16 +21,16 @@ public class teste {
       
       teste.signUP(t);*/
 
-        login login = new login();
+        Login login = new Login();
         login.userSignUp("Vitor", "09301041536", "@gmail.cxom", "vitor123456", "71987908550");
         login.userSignUp("Bruno", "07466819508", "@gmail.cxom", "bruno123456", "71987908550");
         login.userSignUp("Douglas", "04016464595", "@gmail.cxom", "davi123456", "71987908550");
         
         //teste.updateINFO(t);
      //login.userSignIn("07466819508","bruno123456");
-     if (login.userSignIn("09301041536","vitor123456")) {
+     if (login.userSignIn("07466819508","bruno123456")) {
         System.out.println("sucesso");
-         movi mo = new movi(3935);
+         Movi mo = new Movi(1000);
      } else {
         System.out.println("depressão");
      }
