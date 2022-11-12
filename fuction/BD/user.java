@@ -3,12 +3,14 @@ package fuction.BD;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-public class user {
+/*Aqui se localizar os metodos e atributos necessarios para o funcionamento do usuario */
+public class User{
     private static int id;
-    private static String nome,telefone,mail,cpf,password;
-    private static double saldo,saque;
+    private static String nome,telefone,mail,cpf,password,pix;
+    private static double saldo,saque,trans;
     private static Date date;
-    public user(){
+    
+    public User(){
         setDate();
     }
     public  int getId(){
@@ -68,5 +70,18 @@ public class user {
     public void setSaque(double saque){
         this.saque = saque;
 
+    }    
+    public double getTrans() {
+        return trans;
     }
+    public  void setTrans(double trans) {
+        User.trans = trans;
+    }   
+     public  String getPix() {
+        return pix;
+    }
+    public  void setPix(String pix) {
+        User.pix = pix;
+    }
+    
 }
