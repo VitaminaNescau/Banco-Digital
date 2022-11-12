@@ -6,13 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class userDAO extends conect {
+import javax.print.PrintException;
+
+public class UserDAO extends Connect{
     String sql;  
     boolean status;
     //atributo q recebe os dados para a conexão
     private Connection con = conectMysql();
     //metodo com parametro da classe user.
-    public void signUP(user user){
+    //criando conta no banco de dados
+    public void signUP(User user){
         //variavel com o comando do mysql
         sql ="insert into user(name,cpf,password,date_create,email) values(?,?,?,?,?)";
         try {
@@ -32,7 +35,8 @@ public class userDAO extends conect {
             System.out.println("Ocorreu um erro, tente novamente");
         }
     }
-    public boolean signIN(user user){
+    //verificando se a conta existe no banco de dados, caso exista recebera os dados delas
+    public boolean signIN(User user){
        //sql ="select cpf from user where cpf = 987654321";
         //sql = "select  from user where cpf = ?;";
         sql = "select * from user;";
@@ -45,9 +49,10 @@ public class userDAO extends conect {
                 if (user.getCPF().equals(r.getString("cpf"))) {
                   if (r.getString("password").equals(user.getPass())) {
                          System.out.println("encontrou"+" " + r.getString(3)+" "+r.getString(4));
-                            user.setId((r.getInt("id_user")) );
+                            user.setId(r.getInt("id_user"));
                             user.setNome(r.getString("name"));
-                            user.setSaldo((r.getDouble("balance")));
+                            user.setSaldo(r.getDouble("balance"));
+                            user.setPix(r.getString("pix"));
                          //System.out.println(user.getSaldo());//isso ta quebrando o codigo
                         status = true;
                         break;
@@ -70,10 +75,11 @@ public class userDAO extends conect {
         System.out.println(status +" signIN");//teste
         return status;
     }
-    public boolean verifyUP(user user, int t){
-        //boolean status=false;
+    //verificar as informações da conta
+    public boolean verifyUP(User user, int t){
         try {
             switch (t) {
+                //verifica se o cpf existe para criar a conta
                 case 1:sql ="select cpf from user";
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet re = st.executeQuery();
@@ -86,13 +92,13 @@ public class userDAO extends conect {
                         }
                      } 
                 break;
+                //verifica o saldo da conta para que ocorra o saque ou transferencia
                 case 2:
                     sql ="select balance from user where id_user=?";
                     PreparedStatement stB = con.prepareStatement(sql);
                     stB.setInt(1, user.getId());
                     ResultSet reB = stB.executeQuery();     
                     while (reB.next()) {
-                        System.out.println(reB.getDouble("balance")+" " +user.getSaque());
                         if (user.getSaque()<=reB.getDouble("balance") && reB.getDouble("balance") > 0) {
                                 status = true; 
                                 
@@ -114,10 +120,30 @@ public class userDAO extends conect {
 
         return status;
     }
-    public void updateINFO(user user){
+    public boolean verifyUP(String CPFandPIX){
+        //verificar se cpf ou pix existe para efetuar transferencia 
+        sql ="select cpf,pix from user";
+            try{   
+                PreparedStatement st = con.prepareStatement(sql);
+                ResultSet re = st.executeQuery();
+                    while (re.next()) {
+                        if (re.getString("cpf").equals(CPFandPIX) || re.getString("pix").equals(CPFandPIX)) {
+                        status = true;
+                            break;
+                        } else {
+                        status = false;
+                        }
+                     } 
+                    }catch(Exception e){
+                        System.out.println(e);
+                    }  
+        
+        return status;
+    }
+    //faz atualização dos  dados da conta, atualmente sendo utilizado para fazer depositos e atualizar o saldo do usuario
+    public void updateINFO(User user){
         sql = "update user set balance = ? where id_user = ? ";
         try {
-            System.out.println(user.getId()+" update");
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDouble(1, user.getSaldo());
             ps.setInt(2, user.getId());
@@ -129,7 +155,34 @@ public class userDAO extends conect {
         } 
 
     }
-    
+    //atualizar o saldo receptor da transferencia
+    public void transfer(User user,String cpf){
+            sql = "update user set balance = balance + ? where cpf =?";
+                  try {
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setDouble(1,user.getTrans());
+                    ps.setString(2, cpf);
+                    ps.execute();
+                    ps.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }  
+            }
+    public void transfer(User user,String pix,boolean t){
+        sql = "update user set balance = balance + ? where pix =?";
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setDouble(1,user.getTrans());
+                ps.setString(2, pix);
+                ps.execute();
+                ps.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } 
+            }
+        
     
 }
     
