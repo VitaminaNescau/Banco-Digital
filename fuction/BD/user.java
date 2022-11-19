@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 /*Aqui se localizar os metodos e atributos necessarios para o funcionamento do usuario */
 public class User{
-    private static int id;
+    private static int id,pass6;
     private static String nome,telefone,mail,cpf,password,pix;
     private static double saldo,saque,trans;
     private static Date date;
@@ -83,5 +83,10 @@ public class User{
     public  void setPix(String pix) {
         User.pix = pix;
     }
-    
+    public void setPass6(int pass){
+        this.pass6 = pass;
+    }
+    public int getPass6(){
+        return pass6;
+    }
 }
