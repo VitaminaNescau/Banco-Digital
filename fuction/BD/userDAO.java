@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.print.PrintException;
-
 public class UserDAO extends Connect{
     String sql;  
     boolean status;
@@ -53,6 +51,7 @@ public class UserDAO extends Connect{
                             user.setNome(r.getString("name"));
                             user.setSaldo(r.getDouble("balance"));
                             user.setPix(r.getString("pix"));
+                            user.setPass6(r.getInt("password6"));
                          //System.out.println(user.getSaldo());//isso ta quebrando o codigo
                         status = true;
                         break;
@@ -181,6 +180,14 @@ public class UserDAO extends Connect{
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } 
+            }
+    // verificar a senha para transferencia
+     public boolean VerifyPASS(User user,int pass){
+        if (user.getPass6()==pass) {
+            return true;
+                } else {
+                    return false;
+                }
             }
         
     
