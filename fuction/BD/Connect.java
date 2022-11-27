@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 
 public class Connect {
-    private final String USERNAME = "Vitor";
-    private final String PASSWORD = "brasil";
+    private final String USERNAME = "banco1";
+    private final String PASSWORD = "Vitor123";
     //login e senha de acesso ao mysql
     private final String URl_BC = "jdbc:mysql://10.147.17.67/banco_digital";
     private Connection conect;
