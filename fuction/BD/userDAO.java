@@ -6,25 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UserDAO extends Connect{
+public class UserDAO extends User{
     String sql;  
     boolean status;
+    Connect co = new Connect();
     //atributo q recebe os dados para a conexão
-    private Connection con = conectMysql();
-    //metodo com parametro da classe user.
+    private Connection con = co.conectMysql();
+    //metodo com parametro da classe .
     //criando conta no banco de dados
-    public void signUP(User user){
+    public void signUP(){
         //variavel com o comando do mysql
-        sql ="insert into user(name,cpf,password,date_create,email) values(?,?,?,?,?)";
+        sql ="insert into (name,cpf,password,date_create,email) values(?,?,?,?,?)";
         try {
                 PreparedStatement ps = con.prepareStatement(sql);
-                ps.setString(1, user.getNome());
-                //ps.setString(2, user.getTelefone());
-               // ps.setDouble(3, user.getSaldo());
-                ps.setString(2, user.getCPF());
-                ps.setString(3, user.getPass());
-                ps.setString(4, user.getDate());
-                ps.setString(5, user.getMail());
+                ps.setString(1,getNome());
+                //ps.setString(2, .getTelefone());
+               // ps.setDouble(3, .getSaldo());
+                ps.setString(2, getCPF());
+                ps.setString(3, getPass());
+                ps.setString(4, getDate());
+                ps.setString(5, getMail());
                 ps.execute();//executando o insert; vitor da uma olhada melhor nessa biblioteca
                 ps.close();
                 System.out.println("sucesso");
@@ -34,25 +35,25 @@ public class UserDAO extends Connect{
         }
     }
     //verificando se a conta existe no banco de dados, caso exista recebera os dados delas
-    public boolean signIN(User user){
-       //sql ="select cpf from user where cpf = 987654321";
-        //sql = "select  from user where cpf = ?;";
-        sql = "select * from user;";
+    public boolean signIN(){
+       //sql ="select cpf from  where cpf = 987654321";
+        //sql = "select  from  where cpf = ?;";
+        sql = "select * from ;";
         
         try {
             Statement ps = con.createStatement();
             ResultSet r = ps.executeQuery(sql);
             //oq result faz? oq executeQuery faz?
             while(r.next()) {
-                if (user.getCPF().equals(r.getString("cpf"))) {
-                  if (r.getString("password").equals(user.getPass())) {
+                if (getCPF().equals(r.getString("cpf"))) {
+                  if (r.getString("password").equals(getPass())) {
                          System.out.println("encontrou"+" " + r.getString(3)+" "+r.getString(4));
-                            user.setId(r.getInt("id_user"));
-                            user.setNome(r.getString("name"));
-                            user.setSaldo(r.getDouble("balance"));
-                            user.setPix(r.getString("pix"));
-                            user.setPass6(r.getInt("password6"));
-                         //System.out.println(user.getSaldo());//isso ta quebrando o codigo
+                            setId(r.getInt("id_"));
+                            setNome(r.getString("name"));
+                            setSaldo(r.getDouble("balance"));
+                            setPix(r.getString("pix"));
+                            setPass6(r.getInt("password6"));
+                         //Sstem.out.println(.getSaldo());//isso ta quebrando o codigo
                         status = true;
                         break;
                 }else{
@@ -75,15 +76,15 @@ public class UserDAO extends Connect{
         return status;
     }
     //verificar as informações da conta
-    public boolean verifyUP(User user, int t){
+    public boolean verifyUP( int t){
         try {
             switch (t) {
                 //verifica se o cpf existe para criar a conta
-                case 1:sql ="select cpf from user";
+                case 1:sql ="select cpf from ";
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet re = st.executeQuery();
                     while (re.next()) {
-                        if (re.getString("cpf").equals(user.getCPF())) {
+                        if (re.getString("cpf").equals(getCPF())) {
                         status = false;
                             break;
                         } else {
@@ -93,12 +94,12 @@ public class UserDAO extends Connect{
                 break;
                 //verifica o saldo da conta para que ocorra o saque ou transferencia
                 case 2:
-                    sql ="select balance from user where id_user=?";
+                    sql ="select balance from  where id_=?";
                     PreparedStatement stB = con.prepareStatement(sql);
-                    stB.setInt(1, user.getId());
+                    stB.setInt(1, getId());
                     ResultSet reB = stB.executeQuery();     
                     while (reB.next()) {
-                        if (user.getSaque()<=reB.getDouble("balance") && reB.getDouble("balance") > 0) {
+                        if (getSaque()<=reB.getDouble("balance") && reB.getDouble("balance") > 0) {
                                 status = true; 
                                 
                                 break;
@@ -121,7 +122,7 @@ public class UserDAO extends Connect{
     }
     public boolean verifyUP(String CPFandPIX){
         //verificar se cpf ou pix existe para efetuar transferencia 
-        sql ="select cpf,pix from user";
+        sql ="select cpf,pix from ";
             try{   
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet re = st.executeQuery();
@@ -140,12 +141,12 @@ public class UserDAO extends Connect{
         return status;
     }
     //faz atualização dos  dados da conta, atualmente sendo utilizado para fazer depositos e atualizar o saldo do usuario
-    public void updateINFO(User user){
-        sql = "update user set balance = ? where id_user = ? ";
+    public void updateINFO(){
+        sql = "update  set balance = ? where id_ = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDouble(1, user.getSaldo());
-            ps.setInt(2, user.getId());
+            ps.setDouble(1, .getSaldo());
+            ps.setInt(2, .getId());
             ps.execute();
             ps.close();
         } catch (SQLException e) {
@@ -155,11 +156,11 @@ public class UserDAO extends Connect{
 
     }
     //atualizar o saldo receptor da transferencia
-    public void transfer(User user,String cpf){
-            sql = "update user set balance = balance + ? where cpf =?";
+    public void transfer(String cpf){
+            sql = "update  set balance = balance + ? where cpf =?";
                   try {
                     PreparedStatement ps = con.prepareStatement(sql);
-                    ps.setDouble(1,user.getTrans());
+                    ps.setDouble(1,getTrans());
                     ps.setString(2, cpf);
                     ps.execute();
                     ps.close();
@@ -168,11 +169,11 @@ public class UserDAO extends Connect{
                     e.printStackTrace();
                 }  
             }
-    public void transfer(User user,String pix,boolean t){
-        sql = "update user set balance = balance + ? where pix =?";
+    public void transfer(String pix,boolean t){
+        sql = "update  set balance = balance + ? where pix =?";
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
-                ps.setDouble(1,user.getTrans());
+                ps.setDouble(1,getTrans());
                 ps.setString(2, pix);
                 ps.execute();
                 ps.close();
@@ -182,8 +183,8 @@ public class UserDAO extends Connect{
             } 
             }
     // verificar a senha para transferencia
-     public boolean VerifyPASS(User user,int pass){
-        if (user.getPass6()==pass) {
+     public boolean VerifyPASS(int pass){
+        if (getPass6()==pass) {
             return true;
                 } else {
                     return false;
@@ -212,10 +213,10 @@ public class UserDAO extends Connect{
     
     
     //testando outro forma 
-    /*public void signIN2(user user){
-        //sql ="select cpf from user where cpf = 987654321";
-         //sql = "select cpf from user where cpf = ?;";
-         sql = "select cpf,password from user where id_user = ?" ;
+    /*public void signIN2(){
+        //sql ="select cpf from  where cpf = 987654321";
+         //sql = "select cpf from  where cpf = ?;";
+         sql = "select cpf,password from  where id_ = ?" ;
         try {
              PreparedStatement ps = con.prepareStatement(sql);
              ps.setInt(1, 9);
@@ -224,9 +225,9 @@ public class UserDAO extends Connect{
              System.out.println("entrou aq");
              while(r.next()) {
                  int cont=0;
-                 if (user.getCPF().equals(r.getString("cpf"))) {
+                 if (.getCPF().equals(r.getString("cpf"))) {
                      System.out.println(cont);
-                     if (r.getString("password").equals(user.getPass())) {
+                     if (r.getString("password").equals(.getPass())) {
                          System.out.println(cont);
                       System.out.println("encontrou"+" " + r.getString("cpf")+" "+r.getString("password"));
                       break;
