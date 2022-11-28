@@ -11,8 +11,8 @@ public class Login {
         createUser.setMail(email);
         createUser.setPass(password);
         //verifica se o cpf já existe no banco de dados
-        if (newUser.verifyUP(createUser,1)) {
-             newUser.signUP(createUser);
+        if (newUser.verifyUP(1)) {
+             newUser.signUP();
        }else{
             System.out.println("CPF já cadastrado");
        } 
@@ -22,7 +22,7 @@ public class Login {
         createUser.setCPF(cpf);
         createUser.setPass(password);
         UserDAO User = new UserDAO();
-        if (User.signIN(createUser)) {
+        if (User.signIN()) {
             return true;
         } else {
             return false;
