@@ -16,16 +16,17 @@ public class UserDAO extends User{
     //criando conta no banco de dados
     public void signUP(){
         //variavel com o comando do mysql
-        sql ="insert into (name,cpf,password,date_create,email) values(?,?,?,?,?)";
+        System.out.println(getCPF());
+        sql ="insert into user(name,cpf,password,date_create,email) values(?,?,?,?,?)";
         try {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1,getNome());
                 //ps.setString(2, .getTelefone());
                // ps.setDouble(3, .getSaldo());
-                ps.setString(2, getCPF());
-                ps.setString(3, getPass());
-                ps.setString(4, getDate());
-                ps.setString(5, getMail());
+                ps.setString(2,getCPF());
+                ps.setString(3,getPass());
+                ps.setString(4,getDate());
+                ps.setString(5,getMail());
                 ps.execute();//executando o insert; vitor da uma olhada melhor nessa biblioteca
                 ps.close();
                 System.out.println("sucesso");
@@ -38,8 +39,8 @@ public class UserDAO extends User{
     public boolean signIN(){
        //sql ="select cpf from  where cpf = 987654321";
         //sql = "select  from  where cpf = ?;";
-        sql = "select * from ;";
-        
+        sql = "select * from user;";
+        boolean status = false;
         try {
             Statement ps = con.createStatement();
             ResultSet r = ps.executeQuery(sql);
@@ -47,19 +48,21 @@ public class UserDAO extends User{
             while(r.next()) {
                 if (getCPF().equals(r.getString("cpf"))) {
                   if (r.getString("password").equals(getPass())) {
-                         System.out.println("encontrou"+" " + r.getString(3)+" "+r.getString(4));
-                            setId(r.getInt("id_"));
+                         System.out.println("passou");
+                            setId(r.getInt("id_user"));
                             setNome(r.getString("name"));
                             setSaldo(r.getDouble("balance"));
                             setPix(r.getString("pix"));
                             setPass6(r.getInt("password6"));
                          //Sstem.out.println(.getSaldo());//isso ta quebrando o codigo
-                        status = true;
-                        break;
+                        
+                          System.out.println("encontrou"+" " + r.getString(3)+" "+r.getString(4));
+                       return status = true;
+                       
                 }else{
                     System.out.println("Senha errada");
-                    status = false;
-                    break;
+                    return status = false;
+                    
                 }
                 }else{
                     status = false;
@@ -73,14 +76,14 @@ public class UserDAO extends User{
         
         }
         System.out.println(status +" signIN");//teste
-        return status;
+      return status;
     }
     //verificar as informações da conta
     public boolean verifyUP( int t){
         try {
             switch (t) {
                 //verifica se o cpf existe para criar a conta
-                case 1:sql ="select cpf from ";
+                case 1:sql ="select cpf from user";
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet re = st.executeQuery();
                     while (re.next()) {
@@ -90,11 +93,12 @@ public class UserDAO extends User{
                         } else {
                         status = true;
                         }
+                        
                      } 
                 break;
                 //verifica o saldo da conta para que ocorra o saque ou transferencia
                 case 2:
-                    sql ="select balance from  where id_=?";
+                    sql ="select balance from user where id_=?";
                     PreparedStatement stB = con.prepareStatement(sql);
                     stB.setInt(1, getId());
                     ResultSet reB = stB.executeQuery();     
@@ -122,7 +126,7 @@ public class UserDAO extends User{
     }
     public boolean verifyUP(String CPFandPIX){
         //verificar se cpf ou pix existe para efetuar transferencia 
-        sql ="select cpf,pix from ";
+        sql ="select cpf,pix from user";
             try{   
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet re = st.executeQuery();
@@ -142,11 +146,11 @@ public class UserDAO extends User{
     }
     //faz atualização dos  dados da conta, atualmente sendo utilizado para fazer depositos e atualizar o saldo do usuario
     public void updateINFO(){
-        sql = "update  set balance = ? where id_ = ? ";
+        sql = "update user set balance = ? where id_user= ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDouble(1, .getSaldo());
-            ps.setInt(2, .getId());
+            ps.setDouble(1, getSaldo());
+            ps.setInt(2,getId());
             ps.execute();
             ps.close();
         } catch (SQLException e) {
@@ -157,7 +161,7 @@ public class UserDAO extends User{
     }
     //atualizar o saldo receptor da transferencia
     public void transfer(String cpf){
-            sql = "update  set balance = balance + ? where cpf =?";
+            sql = "update  user set balance = balance + ? where cpf =?";
                   try {
                     PreparedStatement ps = con.prepareStatement(sql);
                     ps.setDouble(1,getTrans());
@@ -170,7 +174,7 @@ public class UserDAO extends User{
                 }  
             }
     public void transfer(String pix,boolean t){
-        sql = "update  set balance = balance + ? where pix =?";
+        sql = "update user set balance = balance + ? where pix =?";
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setDouble(1,getTrans());
@@ -183,13 +187,7 @@ public class UserDAO extends User{
             } 
             }
     // verificar a senha para transferencia
-     public boolean VerifyPASS(int pass){
-        if (getPass6()==pass) {
-            return true;
-                } else {
-                    return false;
-                }
-            }
+    
         
     
 }
