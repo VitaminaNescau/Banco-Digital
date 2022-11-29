@@ -37,7 +37,8 @@ public class teste extends javax.swing.JFrame {
         CAD_cpf = new textfield.TextField();
         CAD_email = new textfield.TextField();
         CAD_telefone = new textfield.TextField();
-        myButton1 = new checkbox.MyButton();
+        BT_CAD_voltar = new checkbox.MyButton();
+        BT_CAD_cadastro = new checkbox.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(390, 693));
@@ -55,6 +56,8 @@ public class teste extends javax.swing.JFrame {
                 CAD_senhaActionPerformed(evt);
             }
         });
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(24, 106, 37));
 
@@ -116,9 +119,13 @@ public class teste extends javax.swing.JFrame {
         CAD_telefone.setLabelText("telefone");
         CAD_telefone.setLineColor(new java.awt.Color(24, 106, 37));
 
-        myButton1.setForeground(new java.awt.Color(255, 255, 255));
-        myButton1.setText("Cadastrar");
-        myButton1.setRadius(30);
+        BT_CAD_voltar.setForeground(new java.awt.Color(255, 255, 255));
+        BT_CAD_voltar.setText("Voltar");
+        BT_CAD_voltar.setRadius(30);
+
+        BT_CAD_cadastro.setForeground(new java.awt.Color(255, 255, 255));
+        BT_CAD_cadastro.setText("Cadastrar");
+        BT_CAD_cadastro.setRadius(30);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,8 +147,11 @@ public class teste extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(CAD_email, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(110, 110, 110)
+                        .addComponent(BT_CAD_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(BT_CAD_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,9 +168,11 @@ public class teste extends javax.swing.JFrame {
                 .addComponent(CAD_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CAD_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(BT_CAD_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BT_CAD_voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,7 +183,9 @@ public class teste extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 84, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,6 +235,8 @@ public class teste extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private checkbox.MyButton BT_CAD_cadastro;
+    private checkbox.MyButton BT_CAD_voltar;
     private textfield.TextField CAD_cpf;
     private textfield.TextField CAD_email;
     private textfield.TextField CAD_nome;
@@ -231,6 +247,5 @@ public class teste extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private checkbox.MyButton myButton1;
     // End of variables declaration//GEN-END:variables
 }
