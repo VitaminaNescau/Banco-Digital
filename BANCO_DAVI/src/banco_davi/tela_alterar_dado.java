@@ -27,21 +27,154 @@ public class tela_alterar_dado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        SUDO_nome = new textfield.TextField();
+        SUDO_CPF = new textfield.TextField();
+        SUDO_PIX = new textfield.TextField();
+        SUDO_email = new textfield.TextField();
+        SUDO_senha6digitos = new textfield.TextField();
+        SUDO_telefone = new textfield.TextField();
+        SUDO_senha = new textfield.TextField();
+        BT_enviar_sudo = new checkbox.MyButton();
+        SUDO_voltar_alt_dados = new checkbox.MyButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(24, 106, 37));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Alterar Dados do Banco");
+
+        SUDO_nome.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_nome.setLabelText("Nome");
+        SUDO_nome.setLineColor(new java.awt.Color(24, 106, 37));
+
+        SUDO_CPF.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_CPF.setLabelText("CPF");
+        SUDO_CPF.setLineColor(new java.awt.Color(24, 106, 37));
+
+        SUDO_PIX.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_PIX.setLabelText("PIX");
+        SUDO_PIX.setLineColor(new java.awt.Color(24, 106, 37));
+
+        SUDO_email.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_email.setLabelText("Email");
+        SUDO_email.setLineColor(new java.awt.Color(24, 106, 37));
+
+        SUDO_senha6digitos.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_senha6digitos.setLabelText(" Senha 6 digitos");
+        SUDO_senha6digitos.setLineColor(new java.awt.Color(24, 106, 37));
+
+        SUDO_telefone.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_telefone.setLabelText("Telefone");
+        SUDO_telefone.setLineColor(new java.awt.Color(24, 106, 37));
+
+        SUDO_senha.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        SUDO_senha.setLabelText("Senha");
+        SUDO_senha.setLineColor(new java.awt.Color(24, 106, 37));
+        SUDO_senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SUDO_senhaActionPerformed(evt);
+            }
+        });
+
+        BT_enviar_sudo.setBackground(new java.awt.Color(255, 255, 255));
+        BT_enviar_sudo.setText("ENVIAR");
+        BT_enviar_sudo.setRadius(30);
+        BT_enviar_sudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_enviar_sudoActionPerformed(evt);
+            }
+        });
+
+        SUDO_voltar_alt_dados.setBackground(new java.awt.Color(255, 255, 255));
+        SUDO_voltar_alt_dados.setText("VOLTAR");
+        SUDO_voltar_alt_dados.setRadius(30);
+        SUDO_voltar_alt_dados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SUDO_voltar_alt_dadosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(140, 140, 140))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SUDO_voltar_alt_dados, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BT_enviar_sudo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SUDO_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_senha6digitos, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_email, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_PIX, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_PIX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_senha6digitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SUDO_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BT_enviar_sudo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SUDO_voltar_alt_dados, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SUDO_senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SUDO_senhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SUDO_senhaActionPerformed
+
+    private void SUDO_voltar_alt_dadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SUDO_voltar_alt_dadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SUDO_voltar_alt_dadosActionPerformed
+
+    private void BT_enviar_sudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_enviar_sudoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BT_enviar_sudoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +212,16 @@ public class tela_alterar_dado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private checkbox.MyButton BT_enviar_sudo;
+    private textfield.TextField SUDO_CPF;
+    private textfield.TextField SUDO_PIX;
+    private textfield.TextField SUDO_email;
+    private textfield.TextField SUDO_nome;
+    private textfield.TextField SUDO_senha;
+    private textfield.TextField SUDO_senha6digitos;
+    private textfield.TextField SUDO_telefone;
+    private checkbox.MyButton SUDO_voltar_alt_dados;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,7 +41,6 @@ public class teste extends javax.swing.JFrame {
         BT_CAD_cadastro = new checkbox.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(390, 693));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -122,10 +121,20 @@ public class teste extends javax.swing.JFrame {
         BT_CAD_voltar.setForeground(new java.awt.Color(255, 255, 255));
         BT_CAD_voltar.setText("Voltar");
         BT_CAD_voltar.setRadius(30);
+        BT_CAD_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_CAD_voltarActionPerformed(evt);
+            }
+        });
 
         BT_CAD_cadastro.setForeground(new java.awt.Color(255, 255, 255));
         BT_CAD_cadastro.setText("Cadastrar");
         BT_CAD_cadastro.setRadius(30);
+        BT_CAD_cadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_CAD_cadastroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,6 +207,14 @@ public class teste extends javax.swing.JFrame {
     private void CAD_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAD_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CAD_emailActionPerformed
+
+    private void BT_CAD_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CAD_cadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BT_CAD_cadastroActionPerformed
+
+    private void BT_CAD_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CAD_voltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BT_CAD_voltarActionPerformed
 
     /**
      * @param args the command line arguments

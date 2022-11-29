@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[390, 693]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -244,6 +241,9 @@
             <Property name="text" type="java.lang.String" value="Voltar"/>
             <Property name="radius" type="int" value="30"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_CAD_voltarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="checkbox.MyButton" name="BT_CAD_cadastro">
           <Properties>
@@ -253,6 +253,9 @@
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
             <Property name="radius" type="int" value="30"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_CAD_cadastroActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
