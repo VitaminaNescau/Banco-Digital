@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package teste;
+package banco1;
 
 /**
  *
@@ -69,11 +69,11 @@ public class MyButton extends JButton {
 
     public MyButton() {
         //  Init Color
-
-        setColor(Color.WHITE);
-        colorOver = new Color(179, 250, 160);
-        colorClick = new Color(152, 184, 144);
-        borderColor = new Color(30, 136, 56);
+        Color verde = new Color(24,106,37);
+        setColor(verde);
+        colorOver = new Color(24,106,37);
+        colorClick = new Color(24,152,37);
+        borderColor = new Color(255, 255, 255);
         setContentAreaFilled(false);
         //  Add event mouse
         addMouseListener(new MouseAdapter() {

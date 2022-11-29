@@ -1,5 +1,9 @@
 import javax.swing.event.ChangeEvent;
 
+import banco1.Tela_principal;
+import banco_davi.SUDO;
+import banco_davi.SUDO_SU;
+import banco_davi.teladobanco;
 import fuction.BD.Login;
 
 /*
@@ -200,7 +204,8 @@ public class Login_final extends javax.swing.JFrame {
 
     private void SENHA_esqueceuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SENHA_esqueceuMouseClicked
         // TODO add your handling code here:
-        System.out.println("ta indo ");
+       
+        ESQUE.main(null);
     }//GEN-LAST:event_SENHA_esqueceuMouseClicked
 
     private void MUNDIMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MUNDIMouseMoved
@@ -234,7 +239,7 @@ public class Login_final extends javax.swing.JFrame {
        Barra.start(); 
     }  
     private void DEPOSITOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEPOSITOActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_DEPOSITOActionPerformed
 
     private void BUTTON_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTTON_entrarActionPerformed
@@ -245,9 +250,20 @@ public class Login_final extends javax.swing.JFrame {
         String senha = SENHA_login.getText();
         status = true;
         if (log.userSignIn(cpf,senha)) {
-        System.out.println("sucesso");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Tela_principal.main(null);
         }else{
     System.err.println("erro");
+        }
+        if (cpf.equals("admin")&& senha.equals("admin")) {
+            SUDO.main(null);
+        }if (cpf.equals("adminSU")&& senha.equals("adminSU")) {
+            SUDO_SU.main(null);
         }
       
         
@@ -255,7 +271,6 @@ public class Login_final extends javax.swing.JFrame {
 
 
     private void BUTTON_criarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTTON_criarActionPerformed
-        System.out.println("criar conta");
         Cadastrar.Cadastrar_conta(null);
     }//GEN-LAST:event_BUTTON_criarActionPerformed
 

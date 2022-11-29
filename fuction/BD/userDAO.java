@@ -98,7 +98,7 @@ public class UserDAO extends User{
                 break;
                 //verifica o saldo da conta para que ocorra o saque ou transferencia
                 case 2:
-                    sql ="select balance from user where id_=?";
+                    sql ="select balance from user where id_user=?";
                     PreparedStatement stB = con.prepareStatement(sql);
                     stB.setInt(1, getId());
                     ResultSet reB = stB.executeQuery();     
@@ -126,12 +126,12 @@ public class UserDAO extends User{
     }
     public boolean verifyUP(String CPFandPIX){
         //verificar se cpf ou pix existe para efetuar transferencia 
-        sql ="select cpf,pix from user";
+        sql ="select pix from user";
             try{   
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet re = st.executeQuery();
                     while (re.next()) {
-                        if (re.getString("cpf").equals(CPFandPIX) || re.getString("pix").equals(CPFandPIX)) {
+                        if (re.getString("pix").equals(CPFandPIX)) {
                         status = true;
                             break;
                         } else {
@@ -187,7 +187,21 @@ public class UserDAO extends User{
             } 
             }
     // verificar a senha para transferencia
-    
+    public void mudasenha(String cpf, String senha){
+        sql = "update user set password = ? where cpf=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, senha);
+            ps.setString(2, cpf);
+            ps.execute();
+           
+            
+            System.out.println(ps); 
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
         
     
 }

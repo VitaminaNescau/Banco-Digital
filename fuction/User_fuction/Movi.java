@@ -1,5 +1,6 @@
 package fuction.User_fuction;
 
+import fuction.ADMIN.action;
 import fuction.BD.User;
 import fuction.BD.UserDAO;
 import fuction.BD.User;
@@ -11,8 +12,7 @@ public class Movi{
     /*Permitir transferências (pix)
 Permitir depósitos para outros usuários. */
    
-    public Movi(double s){
-        deposito(s);
+    public Movi(){
         //trans(s, 1, "04016464595");
     }
     /*metodo para se realizar saques, ele recebe o valor do saque 
@@ -61,5 +61,10 @@ Permitir depósitos para outros usuários. */
       
 
     }
-
+    public void imp(double value){
+        deposito(value);
+        double impVALUE = value+(value*0.3);
+        action actionADM = new action();
+        actionADM.relatorio(impVALUE);
+    }
 }
