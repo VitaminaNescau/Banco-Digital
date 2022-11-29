@@ -1,8 +1,8 @@
 
-import fuction.Movi;
 import fuction.BD.Login;
 import fuction.BD.User;
 import fuction.BD.UserDAO;
+import fuction.User_fuction.Movi;
 import fuction.BD.User;
 public class teste {
     public static void main(String[] args) {
@@ -22,13 +22,12 @@ public class teste {
       teste.signUP(t);*/
 
         Login login = new Login();
-        login.userSignUp("Vitor", "09301041536", "@gmail.cxom", "vitor123456", "71987908550");
-        login.userSignUp("Bruno", "07466819508", "@gmail.cxom", "bruno123456", "71987908550");
-        login.userSignUp("Douglas", "04016464595", "@gmail.cxom", "davi123456", "71987908550");
+        //login.userSignUp("Vitor", "09301", "@gmail.cxom", "vitor123456", "71987908550");
+       
         
         //teste.updateINFO(t);
      //login.userSignIn("07466819508","bruno123456");
-     if (login.userSignIn("07466819508","bruno123456")) {
+     if (login.userSignIn("09301","vitor123456")) {
         System.out.println("sucesso");
          Movi mo = new Movi(1000);
      } else {
@@ -38,3 +37,4 @@ public class teste {
 
 }
 }
+

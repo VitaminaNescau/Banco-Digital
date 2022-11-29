@@ -16,7 +16,7 @@ public class Connect {
         //try para captura um erro de conexão(o erro seria se o banco de dados não existisse)
             try {
             conect = DriverManager.getConnection(URl_BC, USERNAME, PASSWORD);
-            System.out.println("sucesso");
+            System.out.println("sucesso conexão banco de dados");
 
             } catch (SQLException e) {
                 System.out.println("SQLException: " + e.getMessage());

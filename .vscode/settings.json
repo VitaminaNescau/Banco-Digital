@@ -3,6 +3,10 @@
         "lib/**/*.jar",
         "drive/ojdbc10.jar",
         "drive/mysql-connector-java-8.0.30.jar",
-        "drive/mysql.jar"
+        "drive/mysql.jar",
+        "drive/filters-2.0.235.jar",
+        "drive/swing-worker-1.1.jar",
+        "drive/swingx-1.6.1.jar",
+        "drive/TimingFramework-0.55.jar"
     ]
 }

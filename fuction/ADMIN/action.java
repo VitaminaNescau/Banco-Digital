@@ -36,13 +36,13 @@ public class action extends admin{
           String texto = buffFile.readLine();
           String conteudo="";
           while (texto!=null) {
-            conteudo += texto;
+            conteudo += "\n"+texto;
             texto = buffFile.readLine();
           }
           System.out.println(conteudo);
            FileWriter fileW = new FileWriter("fuction/ADMIN/relatorio.txt");
            PrintWriter writerF = new PrintWriter(fileW);
-           writerF.println(conteudo+"\n"+"teste3");
+           writerF.println(conteudo+"\n"+"ola");
            writerF.close();
           } catch (Exception e) {
             // TODO: handle exception
