@@ -1,3 +1,5 @@
+import javax.swing.event.ChangeEvent;
+
 import fuction.BD.Login;
 
 /*
@@ -13,7 +15,7 @@ import fuction.BD.Login;
  */
 public class Login_final extends javax.swing.JFrame {
     public int i =0;
-    boolean status = false;
+    boolean status = true;
     /** Creates new form Login */
     public Login_final() {
         initComponents();
@@ -63,7 +65,7 @@ public class Login_final extends javax.swing.JFrame {
         });
 
         BAR_progress.setForeground(new java.awt.Color(0, 102, 0));
-        BAR_progress.setValue(50);
+        //BAR_progress.setValue();
         BAR_progress.setString("");
         BAR_progress.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -198,50 +200,45 @@ public class Login_final extends javax.swing.JFrame {
 
     private void SENHA_esqueceuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SENHA_esqueceuMouseClicked
         // TODO add your handling code here:
+        System.out.println("ta indo ");
     }//GEN-LAST:event_SENHA_esqueceuMouseClicked
 
     private void MUNDIMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MUNDIMouseMoved
         
     }//GEN-LAST:event_MUNDIMouseMoved
 
-    private void BAR_progressStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_BAR_progressStateChanged
-        System.out.println("bar");
-        Thread BAR = new Thread(new Runnable(){
-           
-           
-            @Override
-            public void run() {
-                
-               while (i>=100) {
+    private void BAR_progressStateChanged(javax.swing.event.ChangeEvent evt){//GEN-FIRST:event_BAR_progressStateChanged
+       Thread Barra = new Thread(new Runnable() {
+        @Override
+            public void run(){
+               while (status) {
                if (i<=100) {
-                    i= i+10;
-                    BAR_progress.setValue(i);
-                   }try {
-                Thread.sleep(1000);
-               } catch (Exception e) {
-                // TODO: handle exception
+                i+=10; 
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+               }else{
+                 System.out.println("PAROU");
+                    status = false;
+                    Thread.interrupted();
                }
-                    if (i >=110) {
-                        status = false;
-                        break;
-                    }
-               
+                System.out.println(i);
+                BAR_progress.setValue(i);
                
                }
-            
-            System.out.println(status+""+i);
             }
-             
-        });
-        i=0;
-       // BAR_progress.setValue(0);    
-        BAR.start();
+       });
+      
+       Barra.start(); 
     }  
     private void DEPOSITOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEPOSITOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DEPOSITOActionPerformed
 
     private void BUTTON_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTTON_entrarActionPerformed
+        i=0;
         BAR_progressStateChanged(null);
         Login log = new Login();
         String cpf = CPF_login.getText();
@@ -258,7 +255,8 @@ public class Login_final extends javax.swing.JFrame {
 
 
     private void BUTTON_criarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTTON_criarActionPerformed
-        // TODO add your handling code here:
+        System.out.println("criar conta");
+        Cadastrar.Cadastrar_conta(null);
     }//GEN-LAST:event_BUTTON_criarActionPerformed
 
     /**
